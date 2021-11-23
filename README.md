@@ -1,3 +1,8 @@
+# fork specifics
+this fork was created to shift focus to dis7, and so, examples were migrated to dis7, some dis6-dis7 duplicated code was merged and placed in utils
+and dis7 chain messages (forgot the real name of this feature, 2 or more messages in 1 packet) handling was added.
+many messages were discarded by the IncomingMessage class due to chained messages not being handled.
+
 # open-dis-cpp
 A C++ implementation of the Distributed Interactive Simulation (DIS) protocol.
 Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
