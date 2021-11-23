@@ -3,8 +3,8 @@
 #include <dis6/EntityID.h>
 #include <dis6/EntityID.h>
 #include <dis6/ObjectType.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Orientation.h>
+#include <utils/Vector3Double.h>
+#include <utils/Orientation.h>
 #include <dis6/SimulationAddress.h>
 #include <dis6/SimulationAddress.h>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>

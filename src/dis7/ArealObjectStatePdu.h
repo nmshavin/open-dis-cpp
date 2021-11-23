@@ -5,7 +5,7 @@
 #include <dis7/EntityType.h>
 #include <dis7/SimulationAddress.h>
 #include <dis7/SimulationAddress.h>
-#include <dis7/Vector3Double.h>
+#include <utils/Vector3Double.h>
 #include <vector>
 #include <dis7/SyntheticEnvironmentFamilyPdu.h>
 #include <utils/DataStream.h>

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <dis6/SixByteChunk.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Orientation.h>
+#include <utils/Vector3Double.h>
+#include <utils/Orientation.h>
 #include <utils/DataStream.h>
 #include <utils/msLibMacro.h>
 

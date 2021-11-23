@@ -1,7 +1,7 @@
 #pragma once
 
 #include <dis6/AcousticEmitterSystem.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis6/AcousticBeamData.h>
 #include <vector>
 #include <utils/DataStream.h>

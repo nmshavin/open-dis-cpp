@@ -2,7 +2,7 @@
 
 #include <dis6/EntityID.h>
 #include <dis6/EntityType.h>
-#include <dis6/Orientation.h>
+#include <utils/Orientation.h>
 #include <dis6/GridAxisRecord.h>
 #include <vector>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>

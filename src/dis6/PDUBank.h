@@ -1,5 +1,4 @@
-
-
+#pragma once
 
 #include <utils/IPduBank.h>
 #include <utils/PDUType.h>
@@ -20,5 +19,4 @@ namespace DIS
     };
 }
 
-#endif // _PDU_BANK_H_
 

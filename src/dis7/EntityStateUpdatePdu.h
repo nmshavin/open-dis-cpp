@@ -1,8 +1,8 @@
 #pragma once
 
 #include <dis7/EntityID.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/Vector3Double.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Double.h>
 #include <dis7/EulerAngles.h>
 #include <dis7/VariableParameter.h>
 #include <vector>

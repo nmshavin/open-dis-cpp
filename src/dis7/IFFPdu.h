@@ -8,7 +8,7 @@
 #include <dis7/BeamData.h>
 #include <dis7/SecondaryOperationalData.h>
 #include <dis7/IFFFundamentalParameterData.h>
-#include <dis7/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis7/DistributedEmissionsFamilyPdu.h>
 #include <vector>
 #include <utils/DataStream.h>

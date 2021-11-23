@@ -3,10 +3,10 @@
 #include <dis6/EntityID.h>
 #include <dis6/EntityType.h>
 #include <dis6/AggregateMarking.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Orientation.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
+#include <utils/Orientation.h>
+#include <utils/Vector3Double.h>
+#include <utils/Vector3Float.h>
 #include <dis6/AggregateID.h>
 #include <dis6/EntityID.h>
 #include <dis6/EntityType.h>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <utils/DataStream.h>
 #include <utils/msLibMacro.h>
 

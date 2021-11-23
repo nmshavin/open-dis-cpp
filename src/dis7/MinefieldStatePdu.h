@@ -2,9 +2,9 @@
 
 #include <dis7/MinefieldIdentifier.h>
 #include <dis7/EntityType.h>
-#include <dis7/Vector3Double.h>
+#include <utils/Vector3Double.h>
 #include <dis7/EulerAngles.h>
-#include <dis7/Vector2Float.h>
+#include <utils/Vector2Float.h>
 #include <dis7/EntityType.h>
 #include <vector>
 #include <dis7/MinefieldFamilyPdu.h>

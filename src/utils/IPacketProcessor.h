@@ -19,5 +19,3 @@ namespace DIS
    };
 
 }
-
-#endif // _dcl_dis_i_packet_processor_h_

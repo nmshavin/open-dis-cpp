@@ -4,7 +4,7 @@
 #include <utils/DataStream.h>
 #include <utils/msLibMacro.h>
 #include <dis7/EmitterSystem.h>
-#include <dis7/Vector3Float.h>
+#include <utils/Vector3Float.h>
 
 
 namespace DIS

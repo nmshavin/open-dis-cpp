@@ -4,7 +4,7 @@
 #include <dis6/EntityID.h>
 #include <dis6/EntityType.h>
 #include <dis6/TwoByteChunk.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <vector>
 #include <dis6/MinefieldFamilyPdu.h>
 #include <utils/DataStream.h>

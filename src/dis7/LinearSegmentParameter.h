@@ -1,6 +1,6 @@
 #pragma once
 
-#include <dis7/Vector3Double.h>
+#include <utils/Vector3Double.h>
 #include <dis7/EulerAngles.h>
 #include <utils/DataStream.h>
 #include <utils/msLibMacro.h>

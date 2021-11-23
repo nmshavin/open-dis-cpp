@@ -1,11 +1,11 @@
 #pragma once
 
 #include <dis6/RadioEntityType.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Double.h>
+#include <utils/Vector3Float.h>
 #include <dis6/ModulationType.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <vector>
 #include <dis6/RadioCommunicationsFamilyPdu.h>
 #include <utils/DataStream.h>

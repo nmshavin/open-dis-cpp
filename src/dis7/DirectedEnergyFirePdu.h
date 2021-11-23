@@ -2,7 +2,7 @@
 
 #include <dis7/EntityType.h>
 #include <dis7/ClockTime.h>
-#include <dis7/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis7/StandardVariableSpecification.h>
 #include <vector>
 #include <dis7/WarfareFamilyPdu.h>

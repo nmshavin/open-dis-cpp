@@ -3,8 +3,8 @@
 #include <dis6/EntityID.h>
 #include <dis6/EntityID.h>
 #include <dis6/EventID.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis6/EntityInformationFamilyPdu.h>
 #include <utils/DataStream.h>
 #include <utils/msLibMacro.h>

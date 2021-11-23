@@ -2,9 +2,9 @@
 
 #include <dis7/EntityID.h>
 #include <dis7/EventIdentifier.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/Vector3Float.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <vector>
 #include <dis7/DistributedEmissionsFamilyPdu.h>
 #include <utils/DataStream.h>

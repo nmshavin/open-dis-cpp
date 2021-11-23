@@ -1,7 +1,7 @@
 #pragma once
 
 #include <dis6/EmitterSystem.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis6/ElectromagneticEmissionBeamData.h>
 #include <vector>
 #include <utils/DataStream.h>

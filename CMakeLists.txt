@@ -19,7 +19,7 @@ target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
 # create list of DIS7 source files
 file(GLOB DIS7_SOURCES
   "src/dis7/*.cpp"
-  "src/utils/DataStream.cpp"
+  "src/utils/*.cpp"
 )
 # Define ExampleSender Executable
 add_library(OpenDIS7 SHARED ${DIS7_SOURCES})
@@ -55,7 +55,7 @@ endif(WIN32)
 # Define ExampleSender Executable
 add_executable(ExampleSender ${EX_SENDER_SOURCES})
 # Link OpenDIS into ExampleSender
-target_link_libraries(ExampleSender PRIVATE OpenDIS6)
+target_link_libraries(ExampleSender PRIVATE OpenDIS7)
 target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
 # add src to ExampleSender include directories
 target_include_directories(ExampleSender PRIVATE src)
@@ -72,7 +72,7 @@ file(GLOB EX_RECEIVER_SOURCES
 # Define ExampleReceiver Executable
 add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
 # Link OpenDIS into ExampleReceiver
-target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
+target_link_libraries(ExampleReceiver PRIVATE OpenDIS7)
 target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
 # add src to ExampleSender include directories
 target_include_directories(ExampleReceiver PRIVATE src)

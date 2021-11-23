@@ -2,9 +2,9 @@
 
 #include <dis6/EntityID.h>
 #include <dis6/EventID.h>
-#include <dis6/Vector3Double.h>
+#include <utils/Vector3Double.h>
 #include <dis6/BurstDescriptor.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis6/WarfareFamilyPdu.h>
 #include <utils/DataStream.h>
 #include <utils/msLibMacro.h>

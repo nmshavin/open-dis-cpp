@@ -3,7 +3,7 @@
 #include <dis7/EntityID.h>
 #include <dis7/EntityID.h>
 #include <dis7/ObjectType.h>
-#include <dis7/Vector3Double.h>
+#include <utils/Vector3Double.h>
 #include <dis7/EulerAngles.h>
 #include <dis7/SimulationAddress.h>
 #include <dis7/SimulationAddress.h>

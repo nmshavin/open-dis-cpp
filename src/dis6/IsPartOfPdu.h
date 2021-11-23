@@ -3,7 +3,7 @@
 #include <dis6/EntityID.h>
 #include <dis6/EntityID.h>
 #include <dis6/Relationship.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis6/NamedLocation.h>
 #include <dis6/EntityType.h>
 #include <dis6/EntityManagementFamilyPdu.h>

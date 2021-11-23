@@ -6,7 +6,7 @@
 #include <dis6/SixByteChunk.h>
 #include <dis6/SimulationAddress.h>
 #include <dis6/SimulationAddress.h>
-#include <dis6/Vector3Double.h>
+#include <utils/Vector3Double.h>
 #include <vector>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
 #include <utils/DataStream.h>

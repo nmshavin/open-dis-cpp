@@ -5,12 +5,12 @@
 #include "Timer.h"
 
 // the DIS library usage
-#include <dis6/EntityStatePdu.h>
-#include <dis6/DetonationPdu.h>
+#include <dis7/EntityStatePdu.h>
+#include <dis7/DetonationPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/BurstDescriptor.h>
-
+#include <utils/Vector3Double.h>
+#include <dis7/MunitionDescriptor.h>
+#include <dis7/ArticulatedParts.h>
 #include <utils/Conversion.h>
 
 #include <iostream>
@@ -70,19 +70,19 @@ void init_entities(DIS::EntityStatePdu& friendly0,
    /// basic pdu info
 
    {
-      enemy.setProtocolVersion(6);
-      enemy.setExerciseID(0);
+      enemy.setProtocolVersion(7);
+      enemy.setExerciseID(8);
       //enemy.setPduType(1);
       //enemy.setProtocolFamily(1);
 
-      friendly0.setProtocolVersion(6);
-      friendly0.setExerciseID(0);
+      friendly0.setProtocolVersion(7);
+      friendly0.setExerciseID(8);
       //friendly0.setPduType(1);
       //friendly0.setProtocolFamily(1);
       //friendly0.setArticulationParameterCount(0);
 
-      friendly1.setProtocolVersion(6);
-      friendly1.setExerciseID(0);
+      friendly1.setProtocolVersion(7);
+      friendly1.setExerciseID(8);
       //friendly1.setPduType(1);
       //friendly1.setProtocolFamily(1);
       //friendly1.setArticulationParameterCount(0);
@@ -92,23 +92,23 @@ void init_entities(DIS::EntityStatePdu& friendly0,
    {
       // the enemies
       DIS::EntityID enemy_entity_id;
-      enemy_entity_id.setSite( 0 );
-      enemy_entity_id.setApplication( 1 );
-      enemy_entity_id.setEntity( 1 );
+      enemy_entity_id.getSimulationAddress().setSite( 0 );
+      enemy_entity_id.getSimulationAddress().setApplication( 1 );
+      enemy_entity_id.setEntityNumber( 1 );
 
       enemy.setEntityID( enemy_entity_id );
 
       // the friendlies
       DIS::EntityID friendly_entity_id[2];
-      friendly_entity_id[0].setSite( 0 );
-      friendly_entity_id[0].setApplication( 1 );
-      friendly_entity_id[0].setEntity( 2 );
+      friendly_entity_id[0].getSimulationAddress().setSite(0);
+      friendly_entity_id[0].getSimulationAddress().setApplication( 1 );
+      friendly_entity_id[0].setEntityNumber( 2 );
 
       friendly0.setEntityID( friendly_entity_id[0] );
 
-      friendly_entity_id[1].setSite( 0 );
-      friendly_entity_id[1].setApplication( 1 );
-      friendly_entity_id[1].setEntity( 3 );
+      friendly_entity_id[1].getSimulationAddress().setSite(0);
+      friendly_entity_id[1].getSimulationAddress().setApplication( 1 );
+      friendly_entity_id[1].setEntityNumber( 3 );
 
       friendly1.setEntityID( friendly_entity_id[1] );
    }
@@ -143,7 +143,7 @@ void init_entities(DIS::EntityStatePdu& friendly0,
 
    // dead reckoning
    {
-      DIS::DeadReckoningParameter drp;
+      DIS::DeadReckoningParameters drp;
       drp.setDeadReckoningAlgorithm( Example::DRM_FVW );
 
       friendly0.setDeadReckoningParameters( drp );
@@ -153,27 +153,27 @@ void init_entities(DIS::EntityStatePdu& friendly0,
 
    // articulation
    {
-      DIS::ArticulationParameter turret_azimuth;
-      turret_azimuth.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_TURRET,Example::Articulation::AZIMUTH) );
-      turret_azimuth.setPartAttachedTo( 0 );            // 0 = connected directly to the vehicle
-      turret_azimuth.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      DIS::VariableParameter turret_azimuth;
+      turret_azimuth.setVariableParameterFields3( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_TURRET,Example::Articulation::AZIMUTH) );
+      turret_azimuth.setVariableParameterFields2( 0 );            // 0 = connected directly to the vehicle
+      turret_azimuth.setRecordType( Example::Articulation::ARTICULATED );
 
-      DIS::ArticulationParameter turret_azimuth_rate;
-      turret_azimuth_rate.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_TURRET,Example::Articulation::AZIMUTH_RATE) );
-      turret_azimuth_rate.setPartAttachedTo( 0 );       // 0 = connected directly to the vehicle
-      turret_azimuth_rate.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      DIS::VariableParameter turret_azimuth_rate;
+      turret_azimuth_rate.setVariableParameterFields3( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_TURRET,Example::Articulation::AZIMUTH_RATE) );
+      turret_azimuth_rate.setVariableParameterFields2( 0 );       // 0 = connected directly to the vehicle
+      turret_azimuth_rate.setRecordType( Example::Articulation::ARTICULATED );
 
-      DIS::ArticulationParameter turret_gun_elevation;
-      turret_gun_elevation.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_GUN,Example::Articulation::ELEVATION) );
-      turret_gun_elevation.setPartAttachedTo( 1 );            // 1 = connected to the turret
-      turret_gun_elevation.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      DIS::VariableParameter turret_gun_elevation;
+      turret_gun_elevation.setVariableParameterFields3( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_GUN,Example::Articulation::ELEVATION) );
+      turret_gun_elevation.setVariableParameterFields2( 1 );            // 1 = connected to the turret
+      turret_gun_elevation.setRecordType( Example::Articulation::ARTICULATED );
 
-      DIS::ArticulationParameter gun2_elevation;
-      gun2_elevation.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::SECONDARY_GUN,Example::Articulation::ELEVATION) );
-      gun2_elevation.setPartAttachedTo( 1 );            // 1 = connected to the turret
-      gun2_elevation.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      DIS::VariableParameter gun2_elevation;
+      gun2_elevation.setVariableParameterFields3( DIS::Convert::MakeArticulationParameterType(Example::Articulation::SECONDARY_GUN,Example::Articulation::ELEVATION) );
+      gun2_elevation.setVariableParameterFields2( 1 );            // 1 = connected to the turret
+      gun2_elevation.setRecordType( Example::Articulation::ARTICULATED );
 
-      std::vector<DIS::ArticulationParameter>& params = enemy.getArticulationParameters();
+      std::vector<DIS::VariableParameter>& params = enemy.getVariableParameters();
       params.clear();
       params.resize(4);  // make default number of parameters
       params[Example::INDEX_TURRET_AZIMUTH] = turret_azimuth;
@@ -199,11 +199,11 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
    /// entity id data
    {
       DIS::EntityID detonation_entity_id;
-      detonation_entity_id.setSite( 0 );
-      detonation_entity_id.setApplication( 1 );
-      detonation_entity_id.setEntity( 4 );
+      detonation_entity_id.getSimulationAddress().setSite( 0 );
+      detonation_entity_id.getSimulationAddress().setApplication( 1 );
+      detonation_entity_id.setEntityNumber( 4 );
 
-      detonation.setMunitionID( detonation_entity_id );
+      detonation.setExplodingEntityID( detonation_entity_id );
    }
 
    /// event id data
@@ -215,9 +215,9 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
       //   This field shall be represented by an Event Identifier record (see 5.2.18).
 
       // 0200 Point Detonation (PD)
-      DIS::EventID detonation_event_id;
-      detonation_event_id.setSite( 0 );
-      detonation_event_id.setApplication( 1 );
+      DIS::EventIdentifier detonation_event_id;
+      detonation_event_id.getSimulationAddress().setSite( 0 );
+      detonation_event_id.getSimulationAddress().setApplication( 1 );
       detonation_event_id.setEventNumber( 0 );
       detonation.setEventID( detonation_event_id );
    }
@@ -244,7 +244,7 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
 
       detonation.setLocationInWorldCoordinates(worldPosition);
 
-      DIS::BurstDescriptor burstDescriptor;
+      DIS::MunitionDescriptor burstDescriptor;
       //burstDescriptor.setMunition( 0 );      ///\todo set this with the 64 bit type.
       burstDescriptor.setWarhead( 1000 );    // 1000 High Explosive (HE)
       burstDescriptor.setFuse( 200 );        // 0200 Point Detonation (PD)
@@ -271,29 +271,29 @@ void UpdateTank(DIS::EntityStatePdu& tank, Example::TankDynamics& dynamics, doub
    dynamics.Update( dt );
 
    // articulation
-   std::vector<DIS::ArticulationParameter> &params = tank.getArticulationParameters();
+   std::vector<DIS::VariableParameter> &params = tank.getVariableParameters();
 
-   DIS::ArticulationParameter& turret_azimuth = params[Example::INDEX_TURRET_AZIMUTH];
-   turret_azimuth.setParameterValue( dynamics._angle_primary_turret );
-   turret_azimuth.setChangeIndicator( frame_stamp );  // constantly changing
+   DIS::VariableParameter& turret_azimuth = params[Example::INDEX_TURRET_AZIMUTH];
+   turret_azimuth.setVariableParameterFields1(frame_stamp);  // constantly changing
+   turret_azimuth.setVariableParameterFields4( dynamics._angle_primary_turret );
 
-   DIS::ArticulationParameter& turret_azimuth_rate = params[Example::INDEX_TURRET_AZIMUTH_RATE];
-   turret_azimuth_rate.setChangeIndicator( 0 ); // no change
-   turret_azimuth_rate.setParameterValue( dynamics._velocity_turret );
+   DIS::VariableParameter& turret_azimuth_rate = params[Example::INDEX_TURRET_AZIMUTH_RATE];
+   turret_azimuth_rate.setVariableParameterFields1( 0 ); // no change
+   turret_azimuth_rate.setVariableParameterFields4( dynamics._velocity_turret );
 
-   DIS::ArticulationParameter& gun_elevation = params[Example::INDEX_GUN_ELEVATION];
-   gun_elevation.setChangeIndicator( 0 );  // no change
-   gun_elevation.setParameterValue( dynamics._angle_primary_gun );
+   DIS::VariableParameter& gun_elevation = params[Example::INDEX_GUN_ELEVATION];
+   gun_elevation.setVariableParameterFields1( 0 );  // no change
+   gun_elevation.setVariableParameterFields4( dynamics._angle_primary_gun );
 
-   DIS::ArticulationParameter& gun2_elevation = params[Example::INDEX_GUN_2_ELEVATION];
-   gun2_elevation.setChangeIndicator( frame_stamp );  // no change
-   gun2_elevation.setParameterValue( dynamics._angle_secondary_gun );
+   DIS::VariableParameter& gun2_elevation = params[Example::INDEX_GUN_2_ELEVATION];
+   gun2_elevation.setVariableParameterFields1( frame_stamp );  // no change
+   gun2_elevation.setVariableParameterFields4( dynamics._angle_secondary_gun );
 }
 
 int main(int argc, char* argv[])
 {
-   unsigned int port(62040);
-   std::string ip("224.0.0.1");
+   unsigned int port(3000);
+   std::string ip("127.255.255.255");
    if( argc > 2 )
    {
       port = Example::ToType<unsigned int>( argv[1] );

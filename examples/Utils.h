@@ -6,9 +6,9 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Orientation.h>
+#include <utils/Vector3Double.h>
+#include <utils/Vector3Float.h>
+#include <dis7/EulerAngles.h>
 
 namespace Example
 {
@@ -54,7 +54,7 @@ namespace Example
       void operator ()(double dt);
 
       DIS::Vector3Double position;
-      DIS::Orientation orientation;
+      DIS::EulerAngles orientation;
       DIS::Vector3Float velocity;
 
    private:

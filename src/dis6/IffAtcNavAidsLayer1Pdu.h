@@ -2,7 +2,7 @@
 
 #include <dis6/EntityID.h>
 #include <dis6/EventID.h>
-#include <dis6/Vector3Float.h>
+#include <utils/Vector3Float.h>
 #include <dis6/SystemID.h>
 #include <dis6/IffFundamentalData.h>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
