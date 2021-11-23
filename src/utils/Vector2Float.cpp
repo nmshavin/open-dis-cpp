@@ -1,82 +1,67 @@
-#include <dis6/Vector3Float.h>
+#include <utils/Vector2Float.h>
 
 using namespace DIS;
 
 
-Vector3Float::Vector3Float():
+Vector2Float::Vector2Float():
    _x(0.0), 
-   _y(0.0), 
-   _z(0.0)
+   _y(0.0)
 {
 }
 
-Vector3Float::~Vector3Float()
+Vector2Float::~Vector2Float()
 {
 }
 
-float Vector3Float::getX() const
+float Vector2Float::getX() const
 {
     return _x;
 }
 
-void Vector3Float::setX(float pX)
+void Vector2Float::setX(float pX)
 {
     _x = pX;
 }
 
-float Vector3Float::getY() const
+float Vector2Float::getY() const
 {
     return _y;
 }
 
-void Vector3Float::setY(float pX)
+void Vector2Float::setY(float pX)
 {
     _y = pX;
 }
 
-float Vector3Float::getZ() const
-{
-    return _z;
-}
-
-void Vector3Float::setZ(float pX)
-{
-    _z = pX;
-}
-
-void Vector3Float::marshal(DataStream& dataStream) const
+void Vector2Float::marshal(DataStream& dataStream) const
 {
     dataStream << _x;
     dataStream << _y;
-    dataStream << _z;
 }
 
-void Vector3Float::unmarshal(DataStream& dataStream)
+void Vector2Float::unmarshal(DataStream& dataStream)
 {
     dataStream >> _x;
     dataStream >> _y;
-    dataStream >> _z;
 }
 
 
-bool Vector3Float::operator ==(const Vector3Float& rhs) const
+bool Vector2Float::operator ==(const Vector2Float& rhs) const
  {
      bool ivarsEqual = true;
 
      if( ! (_x == rhs._x) ) ivarsEqual = false;
      if( ! (_y == rhs._y) ) ivarsEqual = false;
-     if( ! (_z == rhs._z) ) ivarsEqual = false;
 
     return ivarsEqual;
  }
 
-int Vector3Float::getMarshalledSize() const
+int Vector2Float::getMarshalledSize() const
 {
    int marshalSize = 0;
 
    marshalSize = marshalSize + 4;  // _x
    marshalSize = marshalSize + 4;  // _y
-   marshalSize = marshalSize + 4;  // _z
     return marshalSize;
 }
 

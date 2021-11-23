@@ -2,8 +2,8 @@
 /// License goes here
 /// @author John K. Grant
 
-#ifndef _dcl_dis_i_packet_processor_h_
-#define _dcl_dis_i_packet_processor_h_
+#pragma once
+
 
 namespace DIS
 {

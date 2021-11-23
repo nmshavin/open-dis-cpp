@@ -1,7 +1,7 @@
-#ifndef _dcl_dis_endian_h_
-#define _dcl_dis_endian_h_
+#pragma once
 
-#include <dis6/msLibMacro.h>       // for library symbols
+
+#include <utils/msLibMacro.h>       // for library symbols
 
 namespace DIS
 {
@@ -13,4 +13,3 @@ namespace DIS
    };
 }
 
-#endif   // _dcl_dis_endian_h_

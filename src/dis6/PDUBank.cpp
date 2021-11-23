@@ -1,4 +1,4 @@
-#include <utils/PDUBank.h>
+#include <dis6/PDUBank.h>
 #include <dis6/EntityStatePdu.h>
 #include <dis6/FirePdu.h>
 #include <dis6/DetonationPdu.h>
@@ -30,10 +30,11 @@
 #include <dis6/AggregateStatePdu.h>
 #include <dis6/IsGroupOfPdu.h>
 #include <dis6/TransferControlRequestPdu.h>
+#include <utils/PduSuperclass.h>
 
 using namespace DIS;
 
-Pdu* PduBank::GetStaticPDU( DIS::PDUType pdu_type )
+PduSuperclass* PduBank::GetStaticPDU(unsigned char pdu_type, DataStream& ds)
 {
    static EntityStatePdu      entityStatePdu;
    static FirePdu             firePdu;

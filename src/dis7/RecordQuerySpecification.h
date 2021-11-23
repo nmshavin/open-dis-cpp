@@ -3,7 +3,7 @@
 #include <dis7/FourByteChunk.h>
 #include <vector>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <utils/msLibMacro.h>
 
 
 namespace DIS

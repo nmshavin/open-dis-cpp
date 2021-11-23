@@ -1,73 +1,51 @@
-#include <dis7/Pdu.h>
+#pragma once
 
-using namespace DIS;
+#include <utils/DataStream.h>
+#include <utils/msLibMacro.h>
 
 
-Pdu::Pdu() : PduSuperclass(),
-   _pduStatus(0), 
-   _padding(0)
+namespace DIS
 {
-}
+// Section 5.2.33. Three floating point values, x, y, and z
 
-Pdu::~Pdu()
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+//
+// @author DMcG, jkg
+
+class EXPORT_MACRO Vector3Float
 {
-}
+protected:
+  /** X value */
+  float _x; 
 
-unsigned char Pdu::getPduStatus() const
-{
-    return _pduStatus;
-}
+  /** y Value */
+  float _y; 
 
-void Pdu::setPduStatus(unsigned char pX)
-{
-    _pduStatus = pX;
-}
-
-unsigned char Pdu::getPadding() const
-{
-    return _padding;
-}
-
-void Pdu::setPadding(unsigned char pX)
-{
-    _padding = pX;
-}
-
-void Pdu::marshal(DataStream& dataStream) const
-{
-    PduSuperclass::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _pduStatus;
-    dataStream << _padding;
-}
-
-void Pdu::unmarshal(DataStream& dataStream)
-{
-    PduSuperclass::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _pduStatus;
-    dataStream >> _padding;
-}
+  /** Z value */
+  float _z; 
 
 
-bool Pdu::operator ==(const Pdu& rhs) const
- {
-     bool ivarsEqual = true;
+ public:
+    Vector3Float();
+    virtual ~Vector3Float();
 
-     ivarsEqual = PduSuperclass::operator==(rhs);
+    virtual void marshal(DataStream& dataStream) const;
+    virtual void unmarshal(DataStream& dataStream);
 
-     if( ! (_pduStatus == rhs._pduStatus) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
+    float getX() const; 
+    void setX(float pX); 
 
-    return ivarsEqual;
- }
+    float getY() const; 
+    void setY(float pX); 
 
-int Pdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
+    float getZ() const; 
+    void setZ(float pX); 
 
-   marshalSize = PduSuperclass::getMarshalledSize();
-   marshalSize = marshalSize + 1;  // _pduStatus
-   marshalSize = marshalSize + 1;  // _padding
-    return marshalSize;
+
+virtual int getMarshalledSize() const;
+
+     bool operator  ==(const Vector3Float& rhs) const;
+};
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

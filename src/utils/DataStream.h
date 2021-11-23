@@ -2,8 +2,8 @@
 /// License goes here
 /// @author John K. Grant
 
-#ifndef _dcl_dis_data_stream_h_
-#define _dcl_dis_data_stream_h_
+#pragma once
+
 
 // the class member, DataStream::BufferType is causing warnign 4251.
 // disable it until a proper fix is found, as instructed from the enlightening article:
@@ -16,7 +16,7 @@
 #include <string>                 // for typedef, member
 #include <vector>                 // for typedef, member
 #include <utils/Endian.h>           // for enum
-#include <dis6/msLibMacro.h>       // for library symbols
+#include <utils/msLibMacro.h>       // for library symbols
 #include <cstdlib>                // for size_t and NULL definition
 #include <cstring>                // for memcpy
 
@@ -85,6 +85,7 @@ namespace DIS
 
       bool empty() const;
 
+      bool seek(int offset);
    private:
       template<typename T, typename IterT>
       void IncrementPointer(IterT& iter)
@@ -150,4 +151,3 @@ namespace DIS
 #pragma warning( pop ) 
 #endif
 
-#endif  // _dcl_dis_data_stream_h_

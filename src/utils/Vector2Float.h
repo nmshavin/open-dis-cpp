@@ -1,83 +1,45 @@
-#include <dis6/Vector3Double.h>
+#pragma once
 
-using namespace DIS;
+#include <utils/DataStream.h>
+#include <utils/msLibMacro.h>
 
 
-Vector3Double::Vector3Double():
-   _x(0.0), 
-   _y(0.0), 
-   _z(0.0)
+namespace DIS
 {
-}
+// Two floating point values, x, y
 
-Vector3Double::~Vector3Double()
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+//
+// @author DMcG, jkg
+
+class EXPORT_MACRO Vector2Float
 {
-}
+protected:
+  /** X value */
+  float _x; 
 
-double Vector3Double::getX() const
-{
-    return _x;
-}
-
-void Vector3Double::setX(double pX)
-{
-    _x = pX;
-}
-
-double Vector3Double::getY() const
-{
-    return _y;
-}
-
-void Vector3Double::setY(double pX)
-{
-    _y = pX;
-}
-
-double Vector3Double::getZ() const
-{
-    return _z;
-}
-
-void Vector3Double::setZ(double pX)
-{
-    _z = pX;
-}
-
-void Vector3Double::marshal(DataStream& dataStream) const
-{
-    dataStream << _x;
-    dataStream << _y;
-    dataStream << _z;
-}
-
-void Vector3Double::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _x;
-    dataStream >> _y;
-    dataStream >> _z;
-}
+  /** y Value */
+  float _y; 
 
 
-bool Vector3Double::operator ==(const Vector3Double& rhs) const
- {
-     bool ivarsEqual = true;
+ public:
+    Vector2Float();
+    virtual ~Vector2Float();
 
-     if( ! (_x == rhs._x) ) ivarsEqual = false;
-     if( ! (_y == rhs._y) ) ivarsEqual = false;
-     if( ! (_z == rhs._z) ) ivarsEqual = false;
+    virtual void marshal(DataStream& dataStream) const;
+    virtual void unmarshal(DataStream& dataStream);
 
-    return ivarsEqual;
- }
+    float getX() const; 
+    void setX(float pX); 
 
-int Vector3Double::getMarshalledSize() const
-{
-   int marshalSize = 0;
+    float getY() const; 
+    void setY(float pX); 
 
-   marshalSize = marshalSize + 8;  // _x
-   marshalSize = marshalSize + 8;  // _y
-   marshalSize = marshalSize + 8;  // _z
-    return marshalSize;
+
+virtual int getMarshalledSize() const;
+
+     bool operator  ==(const Vector2Float& rhs) const;
+};
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

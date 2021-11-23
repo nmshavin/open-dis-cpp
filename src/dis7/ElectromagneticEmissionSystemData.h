@@ -2,7 +2,7 @@
 
 #include <dis7/ElectromagneticEmissionBeamData.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <utils/msLibMacro.h>
 #include <dis7/EmitterSystem.h>
 #include <dis7/Vector3Float.h>
 

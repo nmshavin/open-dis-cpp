@@ -4,7 +4,7 @@
 #include "Utils.h"
 
 #include <utils/IncomingMessage.h>                 // for library usage
-#include <dis6/EntityStatePdu.h>                  // for library usage
+#include <dis7/PDUBank.h>
 
 #include <cstring>                       // for strlen
 #include <cstddef>                       // for size_t definition
@@ -12,8 +12,8 @@
 #include <iostream>
 int main(int argc, char* argv[])
 {
-   unsigned int port(62040);
-   std::string ip("224.0.0.1");
+   unsigned int port(3000);
+   std::string ip("127.255.255.255");
    if( argc > 2 )
    {
       port = Example::ToType<unsigned int>( argv[1] );
@@ -31,6 +31,8 @@ int main(int argc, char* argv[])
 
    const unsigned char es_pdu_type = 1;
    DIS::IncomingMessage incoming;
+   DIS::PduBank pduBank;
+   incoming.AddPduBank(es_pdu_type, (DIS::IPduBank*)&pduBank);
    incoming.AddProcessor( es_pdu_type , &processor );
    while( true )
    {

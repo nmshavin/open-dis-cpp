@@ -2,14 +2,13 @@
 /// License goes here
 /// @author John K. Grant
 
-#ifndef _dcl_dis_incoming_message_
-#define _dcl_dis_incoming_message_
+#pragma once
 
 #include <utils/IBufferProcessor.h>   // for base class
 #include <utils/IPduBank.h> 
 #include <map>                      // for member
 #include <utils/Endian.h>             // for internal type
-#include <dis6/msLibMacro.h>         // for library symbols
+#include <utils/msLibMacro.h>         // for library symbols
 #include <utils/PDUType.h>
 
 namespace DIS
@@ -62,7 +61,7 @@ namespace DIS
       typedef std::pair<PduBankContainer::iterator, PduBankContainer::iterator> PduBankIteratorPair;
       PduBankContainer _pduBanks;
 
-      void SwitchOnType(DIS::PDUType pdu_type, DataStream& ds);
+      void SwitchOnType(DIS::PDUType pdu_type, size_t pdu_length, DataStream& ds);
 
       /// Searches the proccesor container multimap for a matching container and returns the iterator
       bool FindProccessorContainer(unsigned char id, const IPacketProcessor* pp, PacketProcessorContainer::iterator &containerIter);
@@ -73,5 +72,4 @@ namespace DIS
 
 }
 
-#endif  // _dcl_dis_incoming_message_
 

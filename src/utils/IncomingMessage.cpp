@@ -1,18 +1,19 @@
 #include <utils/IncomingMessage.h>
 #include <utils/IPacketProcessor.h>
-#include <dis6/Pdu.h>
+#include <utils/Pdu.h>
 #include <utils/DataStream.h>
-#include <utils/PDUBank.h>
-#include <iostream>
-
-#include <dis6/EntityStatePdu.h>
-
+#include <utils/IPDUBank.h>
 #include <iostream>
 
 using namespace DIS;
 
 // the DIS specification says the type is known for all PDUs at the 3rd byte of the PDU buffer.
-const unsigned int PDU_TYPE_POSITION = 2;
+enum
+{
+    PDU_TYPE_POSITION = 2,
+    PDU_LENGTH_POSITION = 8,
+    HEADER_SIZE = 12
+};
 
 IncomingMessage::IncomingMessage()
 : _processors(), _pduBanks()
@@ -34,14 +35,16 @@ void IncomingMessage::Process(const char* buf, unsigned int size, Endian e)
 
    while( ds.GetReadPos() < ds.size() )
    {  
-      unsigned char pdu_type = ds[PDU_TYPE_POSITION];
-      SwitchOnType( static_cast<DIS::PDUType>(pdu_type), ds );
+        DIS::Pdu pduHeader;
+        pduHeader.unmarshal(ds);
+        ds.seek(-HEADER_SIZE);
+        SwitchOnType( static_cast<DIS::PDUType>(pduHeader.getPduType()), pduHeader.getLength(),  ds );
    }
 }
 
-void IncomingMessage::SwitchOnType(DIS::PDUType pdu_type, DataStream& ds)
+void IncomingMessage::SwitchOnType(DIS::PDUType pdu_type, size_t pdu_length, DataStream& ds)
 {
-   Pdu *pdu = NULL;
+   PduSuperclass *pdu = NULL;
 
    PduBankContainer::iterator containerIter;
 
@@ -50,9 +53,6 @@ void IncomingMessage::SwitchOnType(DIS::PDUType pdu_type, DataStream& ds)
    if (pduBankIt != _pduBanks.end())
    {
       pdu = pduBankIt->second->GetStaticPDU(pdu_type, ds);
-   } else
-   {
-      pdu = PduBank::GetStaticPDU(pdu_type);
    }
 
    // if valid pdu point, and at least 1 processor
@@ -67,13 +67,15 @@ void IncomingMessage::SwitchOnType(DIS::PDUType pdu_type, DataStream& ds)
       PacketProcessorContainer::iterator processor_end = rangepair.second;
       while( processor_iter != processor_end )
       {
-        (processor_iter->second)->Process( *pdu );
+        (processor_iter->second)->Process( *(Pdu*)pdu );
         ++processor_iter;
       }
    }
    else
    {
-      ds.clear();
+       size_t offset = pdu_length;
+       size_t reminder = (ds.GetReadPos() + offset) % 8;
+       ds.seek(offset + reminder);
    }   
 }
 

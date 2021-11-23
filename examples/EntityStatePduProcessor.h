@@ -1,6 +1,6 @@
 #pragma once
 
-#include <dis6/EntityStatePdu.h>                  // for typedef
+#include <dis7/EntityStatePdu.h>                  // for typedef
 #include <utils/IPacketProcessor.h>                // for base class
 
 namespace Example

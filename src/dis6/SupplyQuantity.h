@@ -2,7 +2,7 @@
 
 #include <dis6/EntityType.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <utils/msLibMacro.h>
 
 
 namespace DIS

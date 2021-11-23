@@ -1,5 +1,5 @@
-#ifndef _dtdis_pdu_type_h_
-#define _dtdis_pdu_type_h_
+#pragma once
+
 
 namespace DIS
 {
@@ -57,4 +57,3 @@ namespace DIS
    };
 }
 
-#endif // _dtdis_pdu_type_h_

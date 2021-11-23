@@ -1,75 +1,83 @@
-#pragma once
+#include <utils/Vector3Double.h>
 
-#include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+using namespace DIS;
 
 
-namespace DIS
+Vector3Double::Vector3Double():
+   _x(0.0), 
+   _y(0.0), 
+   _z(0.0)
 {
-// The superclass for all PDUs. This incorporates the PduHeader record, section 5.2.29.
+}
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
-//
-// @author DMcG, jkg
-
-class EXPORT_MACRO Pdu
+Vector3Double::~Vector3Double()
 {
-protected:
-  /** The version of the protocol. 5=DIS-1995, 6=DIS-1998. */
-  unsigned char _protocolVersion; 
+}
 
-  /** Exercise ID */
-  unsigned char _exerciseID; 
+double Vector3Double::getX() const
+{
+    return _x;
+}
 
-  /** Type of pdu, unique for each PDU class */
-  unsigned char _pduType; 
+void Vector3Double::setX(double pX)
+{
+    _x = pX;
+}
 
-  /** value that refers to the protocol family, eg SimulationManagement, et */
-  unsigned char _protocolFamily; 
+double Vector3Double::getY() const
+{
+    return _y;
+}
 
-  /** Timestamp value */
-  unsigned int _timestamp; 
+void Vector3Double::setY(double pX)
+{
+    _y = pX;
+}
 
-  /** Length, in bytes, of the PDU */
-  unsigned short _length; 
+double Vector3Double::getZ() const
+{
+    return _z;
+}
 
-  /** zero-filled array of padding */
-  short _padding; 
+void Vector3Double::setZ(double pX)
+{
+    _z = pX;
+}
 
+void Vector3Double::marshal(DataStream& dataStream) const
+{
+    dataStream << _x;
+    dataStream << _y;
+    dataStream << _z;
+}
 
- public:
-    Pdu();
-    virtual ~Pdu();
-
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
-
-    unsigned char getProtocolVersion() const; 
-    void setProtocolVersion(unsigned char pX); 
-
-    unsigned char getExerciseID() const; 
-    void setExerciseID(unsigned char pX); 
-
-    unsigned char getPduType() const; 
-    void setPduType(unsigned char pX); 
-
-    unsigned char getProtocolFamily() const; 
-    void setProtocolFamily(unsigned char pX); 
-
-    unsigned int getTimestamp() const; 
-    void setTimestamp(unsigned int pX); 
-
-    unsigned short getLength() const; 
-    void setLength(unsigned short pX); 
-
-    short getPadding() const; 
-    void setPadding(short pX); 
+void Vector3Double::unmarshal(DataStream& dataStream)
+{
+    dataStream >> _x;
+    dataStream >> _y;
+    dataStream >> _z;
+}
 
 
-virtual int getMarshalledSize() const;
+bool Vector3Double::operator ==(const Vector3Double& rhs) const
+ {
+     bool ivarsEqual = true;
 
-     bool operator  ==(const Pdu& rhs) const;
-};
+     if( ! (_x == rhs._x) ) ivarsEqual = false;
+     if( ! (_y == rhs._y) ) ivarsEqual = false;
+     if( ! (_z == rhs._z) ) ivarsEqual = false;
+
+    return ivarsEqual;
+ }
+
+int Vector3Double::getMarshalledSize() const
+{
+   int marshalSize = 0;
+
+   marshalSize = marshalSize + 8;  // _x
+   marshalSize = marshalSize + 8;  // _y
+   marshalSize = marshalSize + 8;  // _z
+    return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

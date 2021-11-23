@@ -1,11 +1,11 @@
 /// Copyright goes here
 /// License goes here
 /// @author John K. Grant
-#ifndef _dcl_dis_packet_factory_h_
-#define _dcl_dis_packet_factory_h_
+#pragma once
+
 
 #include <map>                      // for member
-#include <dis6/msLibMacro.h>         // for library symbols
+#include <utils/msLibMacro.h>         // for library symbols
 
 namespace DIS
 {
@@ -68,4 +68,3 @@ namespace DIS
    };
 }
 
-#endif   // _dcl_dis_packet_factory_h_

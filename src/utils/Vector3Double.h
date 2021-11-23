@@ -1,50 +1,50 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <utils/msLibMacro.h>
 
 
 namespace DIS
 {
-// Section 5.2.33. Three floating point values, x, y, and z
+// Section 5.3.34. Three double precision floating point values, x, y, and z
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Vector3Float
+class EXPORT_MACRO Vector3Double
 {
 protected:
   /** X value */
-  float _x; 
+  double _x; 
 
-  /** y Value */
-  float _y; 
+  /** Y value */
+  double _y; 
 
   /** Z value */
-  float _z; 
+  double _z; 
 
 
  public:
-    Vector3Float();
-    virtual ~Vector3Float();
+    Vector3Double();
+    virtual ~Vector3Double();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    float getX() const; 
-    void setX(float pX); 
+    double getX() const; 
+    void setX(double pX); 
 
-    float getY() const; 
-    void setY(float pX); 
+    double getY() const; 
+    void setY(double pX); 
 
-    float getZ() const; 
-    void setZ(float pX); 
+    double getZ() const; 
+    void setZ(double pX); 
 
 
 virtual int getMarshalledSize() const;
 
-     bool operator  ==(const Vector3Float& rhs) const;
+     bool operator  ==(const Vector3Double& rhs) const;
 };
 }
 

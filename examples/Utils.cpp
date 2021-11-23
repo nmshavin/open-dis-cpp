@@ -6,9 +6,9 @@
 #include <unistd.h>
 #endif
 
-#include <dis6/Orientation.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Double.h>
+#include <utils/Orientation.h>
+#include <utils/Vector3Float.h>
+#include <utils/Vector3Double.h>
 #include <SDL_timer.h>
 
 ///\todo make cross platform solution
@@ -54,14 +54,6 @@ void HeloFlightDynamics::operator ()(double dt)
    orientation.setPsi( 0.f);
    orientation.setTheta( 0.f);
    orientation.setPhi( 30.f );
-   //if( vx < 0.f )
-   //{
-   //   orientation.setPhi( M_PI - acos(-vx) );
-   //}
-   //else
-   //{
-   //   orientation.setPhi( acos(vx) );
-   //}
 }
 
 

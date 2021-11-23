@@ -2,10 +2,10 @@
 /// License goes here
 /// @author John K. Grant
 
-#ifndef _dcl_dis_masks_h_
-#define _dcl_dis_masks_h_
+#pragma once
 
-#include <dis6/msLibMacro.h>       // for library symbols
+
+#include <utils/msLibMacro.h>       // for library symbols
 
 namespace DIS
 {
@@ -15,4 +15,3 @@ namespace DIS
    const unsigned int ARTICULATION_PARAMETER_TYPE_METRIC_MASK = 0x001F;
 }
 
-#endif // _dcl_dis_masks_h_

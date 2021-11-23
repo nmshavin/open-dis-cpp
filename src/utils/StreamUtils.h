@@ -2,11 +2,11 @@
 /// License goes here
 /// @author John K. Grant
 
-#ifndef _dis_stream_utils_h_
-#define _dis_stream_utils_h_
+#pragma once
+
 
 #include <ostream>             // for parameter type
-#include <dis6/msLibMacro.h>       // for library symbols
+#include <utils/msLibMacro.h>       // for library symbols
 
 namespace DIS
 {
@@ -21,4 +21,3 @@ EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::EntityID& r
 EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::EntityStatePdu& rhs);
 EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::DetonationPdu& rhs);
 
-#endif // _dis_stream_utils_h_

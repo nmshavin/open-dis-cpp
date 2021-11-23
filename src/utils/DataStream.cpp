@@ -91,6 +91,12 @@ bool DataStream::empty() const
    return _buffer.empty();
 }
 
+bool DataStream::seek(int offset)
+{
+    size_t new_read_pos = _read_pos + offset;
+    _read_pos = new_read_pos;
+    return (new_read_pos <= size());
+}
 const char& DataStream::operator [](unsigned int offset) const
 {
    return _buffer[_read_pos+offset];

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis7/PduSuperclass.h>
+#include <utils/PduSuperclass.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <utils/msLibMacro.h>
 
 
 namespace DIS

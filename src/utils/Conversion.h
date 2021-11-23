@@ -3,10 +3,10 @@
 /// @author John K. Grant
 /// @author Michael Guerrero
 
-#ifndef _dcl_dis_conversion_h_
-#define _dcl_dis_conversion_h_
+#pragma once
 
-#include <dis6/msLibMacro.h>       // for library symbols
+
+#include <utils/msLibMacro.h>       // for library symbols
 
 namespace DIS
 {
@@ -40,4 +40,3 @@ namespace DIS
    };
 }
 
-#endif // _dcl_dis_conversion_h_
